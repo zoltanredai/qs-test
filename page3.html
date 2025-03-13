@@ -1,0 +1,75 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        function CollectQSDataResponse(jsonData) {
+            document.getElementById('CollectCompleted').value = "1";
+            document.forms[0].submit();
+        }
+
+        function QSDataNoResponse() {
+            if (document.getElementById('CollectCompleted').value == "0") {
+                document.forms[0].submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<p> Survey Page 1
+<p>
+<form action="page4.html">
+    Client Id: <input type="text" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <br/><br/>
+    Survey Id:<input type="text" id="SurveyID" name="SurveyID" value="1"/><br/><br/>
+    Response Id:<input type="text" id="PanelistID" name="PanelistID" value="20"/><br/><br/>
+    Language Code: <input type="hidden" id="LangCode" name="LangCode" value="EN"/> <br/><br/>
+    <table>
+        <tr>
+            <th>How do you know about us?</th>
+        </tr>
+        -
+        <tr>
+            <td><input type="checkbox" id="chb-1" name="vehicle" value="bike">I have a bike</input></td>
+        </tr>
+        -
+        <tr>
+            <td><input type="checkbox" id="chb-2" name="vehicle" value="car">I have a car</input></td>
+        </tr>
+        -
+        <tr>
+            <td><input type="checkbox" id="chb-3" name="vehicle" value="rv">I have a RV</input></td>
+        </tr>
+        -
+        <tr>
+            <td><input type="checkbox" id="chb-4" name="vehicle" value="boat">I have a boat</input></td>
+        </tr>
+    </table>
+    <input type="button" value="Submit" id="submit-3" onclick="submitPage();"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+<script>
+    document.getElementById("PanelistID").value = localStorage.getItem("PanelistIDValue");
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+
+    var client_id = getParameterByName("ClientID");
+    document.getElementById("ClientID").value = client_id;
+    var survey_id = getParameterByName("SurveyID");
+    document.getElementById("SurveyID").value = survey_id;
+    var response_id = getParameterByName("PanelistID");
+    document.getElementById("PanelistID").value = response_id;
+
+    function submitPage() {
+        setTimeout("QSDataNoResponse();", 5000);
+        imperium_qualityscore.CollectData('p3', '', CollectQSDataResponse);
+    }
+</script>
+</html>

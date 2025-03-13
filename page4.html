@@ -1,0 +1,169 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function getMatrixData(mq) {
+            if (mq == "") {
+                return "";
+            } else {
+                var a = mq.split("|");
+                var mstr = "";
+
+                for (var i = 0; i < a.length; i++) {
+                    if (mstr != "") {
+                        mstr += '|';
+                    }
+                    var qid = a[i];
+                    var rows = document.getElementById(a[i]).getElementsByTagName('tr');
+                    var thisdata = "";
+
+                    for (var j = 0; j < rows.length; j++) {
+                        var thisrow = "";
+                        var mdatai = rows[j].getElementsByTagName('input');
+
+                        for (var k = 0; k < mdatai.length; k++) {
+                            if (mdatai[k].checked) {
+                                if (thisdata == "") {
+                                    thisdata += qid + ':';
+                                }
+                                var row = mdatai[k].name;
+                                if (thisrow == "") {
+                                    thisrow += row + '-';
+                                }
+                                var cell = mdatai[k].value;
+                                thisrow += cell + ',';
+                            }
+                        }
+
+                        if (thisrow != "") {
+                            thisrow = thisrow.substring(0, thisrow.length - 1) + ';'; // delimit rows by ;
+                        }
+                        thisdata += thisrow;
+                    }
+                    mstr += thisdata.substring(0, thisdata.length - 1);
+                }
+                return mstr;
+            }
+        }
+
+        function CollectQSDataResponse(jsonData) {
+            document.getElementById('CollectCompleted').value = "1";
+            document.forms[0].submit();
+        }
+
+        function QSDataNoResponse() {
+            if (document.getElementById('CollectCompleted').value == "0") {
+                document.forms[0].submit();
+            }
+        }
+    </script>
+</head>
+<body>
+<p> Survey Page 1
+<p>
+<form action="thankyou.html">
+    Client Id: <input type="text" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <br/><br/>
+    Survey Id:<input type="text" id="SurveyID" name="SurveyID" value="1"/><br/><br/>
+    Response Id:<input type="text" id="PanelistID" name="PanelistID" value="20"/><br/><br/>
+    Language Code: <input type="hidden" id="LangCode" name="LangCode" value="EN"/> <br/><br/>
+    <p>Please rank the following ice cream flavors.</p>
+    <fieldset id="ice_cream">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <th>Vanilla</th>
+                <td><input type="radio" id="r-1-1" name="vanilla" value="1"></td>
+                <td><input type="radio" id="r-1-2" name="vanilla" value="2"></td>
+                <td><input type="radio" id="r-1-3" name="vanilla" value="3"></td>
+                <td><input type="radio" id="r-1-4" name="vanilla" value="4"></td>
+                <td><input type="radio" id="r-1-5" name="vanilla" value="5"></td>
+                <td><input type="radio" id="r-1-6" name="vanilla" value="6"></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <th>Chocolate</th>
+                <td><input type="radio" id="r-2-1" name="chocolate" value="1"></td>
+                <td><input type="radio" id="r-2-2" name="chocolate" value="2"></td>
+                <td><input type="radio" id="r-2-3" name="chocolate" value="3"></td>
+                <td><input type="radio" id="r-2-4" name="chocolate" value="4"></td>
+                <td><input type="radio" id="r-2-5" name="chocolate" value="5"></td>
+                <td><input type="radio" id="r-2-6" name="chocolate" value="6"></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <th>Strawberry</th>
+                <td><input type="radio" id="r-3-1" name="strawberry" value="1"></td>
+                <td><input type="radio" id="r-3-2" name="strawberry" value="2"></td>
+                <td><input type="radio" id="r-3-3" name="strawberry" value="3"></td>
+                <td><input type="radio" id="r-3-4" name="strawberry" value="4"></td>
+                <td><input type="radio" id="r-3-5" name="strawberry" value="5"></td>
+                <td><input type="radio" id="r-3-6" name="strawberry" value="6"></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <th>Butterscotch</th>
+                <td><input type="radio" id="r-4-1" name="butterscotch" value="1"></td>
+                <td><input type="radio" id="r-4-2" name="butterscotch" value="2"></td>
+                <td><input type="radio" id="r-4-3" name="butterscotch" value="3"></td>
+                <td><input type="radio" id="r-4-4" name="butterscotch" value="4"></td>
+                <td><input type="radio" id="r-4-5" name="butterscotch" value="5"></td>
+                <td><input type="radio" id="r-4-6" name="butterscotch" value="6"></td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+                <th>Caramel</th>
+                <td><input type="radio" id="r-5-1" name="caramel" value="1"></td>
+                <td><input type="radio" id="r-5-2" name="caramel" value="2"></td>
+                <td><input type="radio" id="r-5-3" name="caramel" value="3"></td>
+                <td><input type="radio" id="r-5-4" name="caramel" value="4"></td>
+                <td><input type="radio" id="r-5-5" name="caramel" value="5"></td>
+                <td><input type="radio" id="r-5-6" name="caramel" value="6"></td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+    <input type="button" value="Submit" id="submit-4" onclick="submitPage();"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+<script>
+    document.getElementById("PanelistID").value = localStorage.getItem("PanelistIDValue");
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+
+    var client_id = getParameterByName("ClientID");
+    document.getElementById("ClientID").value = client_id;
+    var survey_id = getParameterByName("SurveyID");
+    document.getElementById("SurveyID").value = survey_id;
+    var response_id = getParameterByName("PanelistID");
+    document.getElementById("PanelistID").value = response_id;
+
+    function submitPage() {
+        setTimeout("QSDataNoResponse();", 5000);
+        imperium_qualityscore.CollectData('p4', getMatrixData('ice_cream'), CollectQSDataResponse);
+    }
+</script>
+</html>

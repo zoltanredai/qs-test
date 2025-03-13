@@ -1,0 +1,58 @@
+<html>
+<head>
+</head>
+<form>
+    <body>
+    <p> Thank you for participating in our survey
+    <p>
+        Score: <input name="Score" id="Score" size="50"/><br/>
+        StraightlineRanking: <input name="StraightlineRanking" id="StraightlineRanking" size="50"/><br/>
+        SpeedingRanking: <input name="SpeedingRanking" id="SpeedingRanking" size="50"/><br/>
+        RASRanking: <input name="RASRanking" id="RASRanking" size="50"/><br/>
+        OutlierGroups: <textarea id="OutlierGroups" cols="50" rows="2"></textarea><br/><br/>
+
+        Client Id: <input type="text" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/> <br/><br/>
+        Survey Id:<input type="text" id="SurveyID" name="SurveyID" value="1"/><br/><br/>
+        Response Id:<input type="text" id="PanelistID" name="PanelistID" value="20"/><br/><br/>
+    </body>
+</form>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+<script type="text/javascript">
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+
+    var client_id = getParameterByName("ClientID");
+    document.getElementById("ClientID").value = client_id;
+    var survey_id = getParameterByName("SurveyID");
+    document.getElementById("SurveyID").value = survey_id;
+    var response_id = getParameterByName("PanelistID");
+    document.getElementById("PanelistID").value = response_id;
+
+    imperium_qualityscore.AnalyzeData(
+        AnalyzeDataReponse,
+        {
+            QualityQuestionsTotal: 3,
+            QualityQuestionsFailed: 0
+        }
+    );
+
+    function AnalyzeDataReponse(jsonData) {
+        if (jsonData.StatusCode == 200) {
+            document.getElementById('Score').value = jsonData.Score
+            document.getElementById('StraightlineRanking').value = jsonData.StraightlineRanking
+            document.getElementById('SpeedingRanking').value = jsonData.SpeedingRanking
+            document.getElementById('RASRanking').value = jsonData.RASRanking
+            document.getElementById('OutlierGroups').value = JSON.stringify(jsonData.OutlierGroups)
+        } else {
+            console.log(jsonData);
+        }
+    }
+
+</script>
+</html>
