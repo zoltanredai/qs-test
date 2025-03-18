@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qs-communication.js"></script>
+    <script type="text/javascript" src="js/parameter-handling.js"></script>
+</head>
+<body>
+<form action="thankyou.html">
+    <input type="hidden" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <input type="hidden" id="SurveyID" name="SurveyID" value="23"/>
+    <input type="hidden" id="PanelistID" name="PanelistID" value="1"/>
+    <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
+    <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
+
+    <table>
+        <tr>
+            <th style="text-align: left">How do you like this subjects?</th>
+        </tr>
+        <tr>
+            <td>
+                <fieldset id="subjects">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>Maths</th>
+                            <td><input type="radio" id="r-1-1" name="Maths" value="1"></td>
+                            <td><input type="radio" id="r-1-2" name="Maths" value="2"></td>
+                            <td><input type="radio" id="r-1-3" name="Maths" value="3"></td>
+                            <td><input type="radio" id="r-1-4" name="Maths" value="4"></td>
+                            <td><input type="radio" id="r-1-5" name="Maths" value="5"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Physics</th>
+                            <td><input type="radio" id="r-2-1" name="Physics" value="1"></td>
+                            <td><input type="radio" id="r-2-2" name="Physics" value="2"></td>
+                            <td><input type="radio" id="r-2-3" name="Physics" value="3"></td>
+                            <td><input type="radio" id="r-2-4" name="Physics" value="4"></td>
+                            <td><input type="radio" id="r-2-5" name="Physics" value="5"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Biology</th>
+                            <td><input type="radio" id="r-3-1" name="Biology" value="1"></td>
+                            <td><input type="radio" id="r-3-2" name="Biology" value="2"></td>
+                            <td><input type="radio" id="r-3-3" name="Biology" value="3"></td>
+                            <td><input type="radio" id="r-3-4" name="Biology" value="4"></td>
+                            <td><input type="radio" id="r-3-5" name="Biology" value="5"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Chemistry</th>
+                            <td><input type="radio" id="r-4-1" name="Chemistry" value="1"></td>
+                            <td><input type="radio" id="r-4-2" name="Chemistry" value="2"></td>
+                            <td><input type="radio" id="r-4-3" name="Chemistry" value="3"></td>
+                            <td><input type="radio" id="r-4-4" name="Chemistry" value="4"></td>
+                            <td><input type="radio" id="r-4-5" name="Chemistry" value="5"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>English</th>
+                            <td><input type="radio" id="r-5-1" name="English" value="1"></td>
+                            <td><input type="radio" id="r-5-2" name="English" value="2"></td>
+                            <td><input type="radio" id="r-5-3" name="English" value="3"></td>
+                            <td><input type="radio" id="r-5-4" name="English" value="4"></td>
+                            <td><input type="radio" id="r-5-5" name="English" value="5"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" value="Submit" id="submitButton" onclick="submitMatrixPage('p12', 'subjects');"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+</html>

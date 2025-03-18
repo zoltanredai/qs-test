@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qs-communication.js"></script>
+    <script type="text/javascript" src="js/parameter-handling.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Thank you for participating in our survey</th>
+    </tr>
+    <tr>
+        <td><label for="Score">Score:</label></td>
+        <td><input name="Score" id="Score" size="50"/></td>
+    <tr>
+        <td><label for="StraightlineRanking">StraightlineRanking:</label></td>
+        <td><input name="StraightlineRanking" id="StraightlineRanking" size="50"/></td>
+    <tr>
+        <td><label for="SpeedingRanking">SpeedingRanking:</label></td>
+        <td><input name="SpeedingRanking" id="SpeedingRanking" size="50"/></td>
+    <tr>
+        <td><label for="RASRanking">RASRanking:</label></td>
+        <td><input name="RASRanking" id="RASRanking" size="50"/></td>
+    </tr>
+    <tr>
+        <td><label for="OutlierGroups">OutlierGroups:</label></td>
+        <td><textarea id="OutlierGroups" cols="50" rows="2"></textarea></td>
+    </tr>
+    <tr>
+        <td><label for="ClientID">Client Id:</label></td>
+        <td><input type="text" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/></td>
+    </tr>
+    <tr>
+        <td><label for="SurveyID">Surveyy Id:</label></td>
+        <td><input type="text" id="SurveyID" name="SurveyID" value="23"/></td>
+    </tr>
+    <tr>
+        <td><label for="PanelistID">Response Id:</label></td>
+        <td><input type="text" id="PanelistID" name="PanelistID" value="1"/></td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+<script type="text/javascript">
+    loadId();
+    AnalyzeData();
+</script>
+</html>
