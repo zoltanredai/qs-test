@@ -1,0 +1,45 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qs-communication.js"></script>
+    <script type="text/javascript" src="js/parameter-handling.js"></script>
+</head>
+<body>
+<form action="2_open.html">
+    <input type="hidden" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <input type="hidden" id="SurveyID" name="SurveyID" value="1"/>
+    <input type="hidden" id="PanelistID" name="PanelistID" value="20"/>
+    <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
+    <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
+
+    <table>
+        <tr>
+            <th style="text-align: left">How do you know about us?</th>
+        </tr>
+        <tr>
+            <td><input type="radio" id="radio-1" name="know" value="TV">TV</input></td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="radio-2" name="know" value="NewsPaper">NewsPaper</input></td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="radio-3" name="know" value="SocialMedia">Social Media</input></td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="radio-4" name="know" value="Friends">Friends</input></td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="radio-5" name="know" value="Flyer">Flyer</input></td>
+        </tr>
+    </table>
+
+    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:return submitPage('p1');"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+<script>
+    generateId()
+</script>
+</html>

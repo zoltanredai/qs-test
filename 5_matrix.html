@@ -1,0 +1,102 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qs-communication.js"></script>
+    <script type="text/javascript" src="js/parameter-handling.js"></script>
+</head>
+<body>
+<form action="thankyou.html">
+    <input type="hidden" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <input type="hidden" id="SurveyID" name="SurveyID" value="1"/>
+    <input type="hidden" id="PanelistID" name="PanelistID" value="20"/>
+    <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
+    <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
+
+    <table>
+        <tr>
+            <th style="text-align: left">Please rank the following ice cream flavors.</th>
+        </tr>
+        <tr>
+            <td>
+                <fieldset id="ice_cream">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                            <th>6</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>Vanilla</th>
+                            <td><input type="radio" id="r-1-1" name="vanilla" value="1"></td>
+                            <td><input type="radio" id="r-1-2" name="vanilla" value="2"></td>
+                            <td><input type="radio" id="r-1-3" name="vanilla" value="3"></td>
+                            <td><input type="radio" id="r-1-4" name="vanilla" value="4"></td>
+                            <td><input type="radio" id="r-1-5" name="vanilla" value="5"></td>
+                            <td><input type="radio" id="r-1-6" name="vanilla" value="6"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Chocolate</th>
+                            <td><input type="radio" id="r-2-1" name="chocolate" value="1"></td>
+                            <td><input type="radio" id="r-2-2" name="chocolate" value="2"></td>
+                            <td><input type="radio" id="r-2-3" name="chocolate" value="3"></td>
+                            <td><input type="radio" id="r-2-4" name="chocolate" value="4"></td>
+                            <td><input type="radio" id="r-2-5" name="chocolate" value="5"></td>
+                            <td><input type="radio" id="r-2-6" name="chocolate" value="6"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Strawberry</th>
+                            <td><input type="radio" id="r-3-1" name="strawberry" value="1"></td>
+                            <td><input type="radio" id="r-3-2" name="strawberry" value="2"></td>
+                            <td><input type="radio" id="r-3-3" name="strawberry" value="3"></td>
+                            <td><input type="radio" id="r-3-4" name="strawberry" value="4"></td>
+                            <td><input type="radio" id="r-3-5" name="strawberry" value="5"></td>
+                            <td><input type="radio" id="r-3-6" name="strawberry" value="6"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Butterscotch</th>
+                            <td><input type="radio" id="r-4-1" name="butterscotch" value="1"></td>
+                            <td><input type="radio" id="r-4-2" name="butterscotch" value="2"></td>
+                            <td><input type="radio" id="r-4-3" name="butterscotch" value="3"></td>
+                            <td><input type="radio" id="r-4-4" name="butterscotch" value="4"></td>
+                            <td><input type="radio" id="r-4-5" name="butterscotch" value="5"></td>
+                            <td><input type="radio" id="r-4-6" name="butterscotch" value="6"></td>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>Caramel</th>
+                            <td><input type="radio" id="r-5-1" name="caramel" value="1"></td>
+                            <td><input type="radio" id="r-5-2" name="caramel" value="2"></td>
+                            <td><input type="radio" id="r-5-3" name="caramel" value="3"></td>
+                            <td><input type="radio" id="r-5-4" name="caramel" value="4"></td>
+                            <td><input type="radio" id="r-5-5" name="caramel" value="5"></td>
+                            <td><input type="radio" id="r-5-6" name="caramel" value="6"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" value="Submit" id="submitButton" onclick="submitMatrixPage('p5', 'ice_cream');"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+</html>

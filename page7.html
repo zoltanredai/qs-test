@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qs-communication.js"></script>
+    <script type="text/javascript" src="js/parameter-handling.js"></script>
+</head>
+<body>
+<form action="page8.html">
+    <input type="hidden" id="ClientID" name="ClientID" value="440245D0-EE10-11EF-B822-12AE3303122B"/>
+    <input type="hidden" id="SurveyID" name="SurveyID" value="23"/>
+    <input type="hidden" id="PanelistID" name="PanelistID" value="25"/>
+    <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
+    <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
+
+    <table>
+        <tr>
+            <th style="text-align: left">How much do you like mathematics? (1 - not at all, 5 - I really like it)</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="radio" id="radio-21" name="like2" value="21">1</input></td>
+            <td><input type="radio" id="radio-22" name="like2" value="22">2</input></td>
+            <td><input type="radio" id="radio-23" name="like2" value="23">3</input></td>
+            <td><input type="radio" id="radio-24" name="like2" value="24">4</input></td>
+            <td><input type="radio" id="radio-25" name="like2" value="25">5</input></td>
+        </tr>
+    </table>
+
+    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:return submitPage('p7');"/>
+    <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+
+</form>
+</body>
+<script type="text/javascript" src="https://d2cjqdos4nhnz5.cloudfront.net/qslib1.0.js"></script>
+</html>
