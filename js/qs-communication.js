@@ -88,11 +88,11 @@ function AnalyzeDataResponse(jsonData) {
 $(document).ready(function () {
     let raAttr = {};
     raAttr.NlptScore = "1";
-    raAttr.AnalyzeQuestionText = true;
-    raAttr.QuestionText = "Test Question Test";
+    raAttr.AnalyzeQuestionText = false;
+    raAttr.QuestionText = "";
     raAttr.AcceptNotSupportedLanguages = "1";
-    raAttr.IsBrandQuestion = "1";
-    raAttr.LanguageCode = "lt";
+    raAttr.IsBrandQuestion = "0";
+    raAttr.LanguageCode = "en";
 
     $(".imperium-ra-question").each(function () {
         $(this).prop('imperium-ra-attrs', raAttr);
