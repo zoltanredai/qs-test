@@ -75,11 +75,13 @@ function AnalyzeData () {
 
 function AnalyzeDataResponse(jsonData) {
     if (jsonData.StatusCode == 200) {
+        let aiDetect = analyzeBehavior();
         document.getElementById('Score').value = jsonData.Score
         document.getElementById('StraightlineRanking').value = jsonData.StraightlineRanking
         document.getElementById('SpeedingRanking').value = jsonData.SpeedingRanking
         document.getElementById('RASRanking').value = jsonData.RASRanking
         document.getElementById('OutlierGroups').value = JSON.stringify(jsonData.OutlierGroups)
+        document.getElementById('AIDetect').value = JSON.stringify(aiDetect)
     } else {
         console.log(jsonData);
     }
@@ -88,11 +90,11 @@ function AnalyzeDataResponse(jsonData) {
 $(document).ready(function () {
     let raAttr = {};
     raAttr.NlptScore = "1";
-    raAttr.AnalyzeQuestionText = false;
-    raAttr.QuestionText = "";
+    raAttr.AnalyzeQuestionText = true;
+    raAttr.QuestionText = "Test Question Test";
     raAttr.AcceptNotSupportedLanguages = "1";
-    raAttr.IsBrandQuestion = "0";
-    raAttr.LanguageCode = "en";
+    raAttr.IsBrandQuestion = "1";
+    raAttr.LanguageCode = "lt";
 
     $(".imperium-ra-question").each(function () {
         $(this).prop('imperium-ra-attrs', raAttr);
