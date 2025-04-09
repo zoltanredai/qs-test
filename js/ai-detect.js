@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     $(document).on("mousemove", function (event) {
         const now = Date.now();
-        if (now - lastMouseLog > 10) {
+        if (now - lastMouseLog > (mouseMoved.length < 100 ? 0 : 10 ** (1 + Math.floor(Math.log10(mouseMoved.length / 100))))) {
             mouseMoved.push({x: event.pageX, y: event.pageY, time: Date.now()});
             lastMouseLog = now;
         }
