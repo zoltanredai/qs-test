@@ -54,10 +54,11 @@ $(document).ready(function () {
         if (mouseMoved.length > 1) {
             const mouseDistanceValue = mouseDistance();
             const mouseMovingTime = mouseMoved[mouseMoved.length - 1].time - mouseMoved[0].time;
+            const leastSquaresDifValue = leastSquaresDif();
             mouse.push({
                 mousePointNumber: mouseMoved.length,
-                leastSquaresDifValue: leastSquaresDif(),
-                leastSquaresDifNormalValue: leastSquaresDif() / mouseMoved.length,
+                leastSquaresDifValue: leastSquaresDifValue,
+                leastSquaresDifNormalValue: leastSquaresDifValue.value / mouseMoved.length,
                 mouseDistanceValue: mouseDistanceValue,
                 mouseMovingTime: mouseMovingTime,
                 mouseSpeed: mouseDistanceValue / mouseMovingTime,
@@ -80,7 +81,17 @@ $(document).ready(function () {
         });
         let a = (mouseMoved.length * sumxiyi - sumxi * sumyi) / (mouseMoved.length * sumxi2 - sumxi * sumxi);
         let b = (sumyi - a * sumxi) / mouseMoved.length;
-        return mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2).reduce((sum, dif) => sum + dif, 0);
+        return {
+            value: mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2).reduce((sum, dif) => sum + dif, 0),
+            mouseMoved: mouseMoved,
+            mouseMovedMap: mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2),
+            sumxi: sumxi,
+            sumyi: sumyi,
+            sumxiyi, sumxiyi,
+            sumxi2: sumxi2,
+            a: a,
+            b: b
+        }
     }
 
     function mouseDistance() {
