@@ -55,7 +55,9 @@ $(document).ready(function () {
             const mouseDistanceValue = mouseDistance();
             const mouseMovingTime = mouseMoved[mouseMoved.length - 1].time - mouseMoved[0].time;
             mouse.push({
+                mousePointNumber: mouseMoved.length,
                 leastSquaresDifValue: leastSquaresDif(),
+                leastSquaresDifNormalValue: leastSquaresDif() / mouseMoved.length,
                 mouseDistanceValue: mouseDistanceValue,
                 mouseMovingTime: mouseMovingTime,
                 mouseSpeed: mouseDistanceValue / mouseMovingTime,
