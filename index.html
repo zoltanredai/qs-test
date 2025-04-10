@@ -1,12 +1,19 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=page1.html">
-    <title>Átirányítás...</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=page1.html">
+  <title>Redirect</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('test') === 'mouse') {
+      window.location.href = 'mousetest.html';
+    } else {
+      window.location.href = 'page1.html';
+    }
+  </script>
 </head>
 <body>
-    <p>Ha az átirányítás nem működik, kattints ide: <a href="page1.html">page1.html</a></p>
+  <p>Átirányítás történik...</p>
 </body>
 </html>
