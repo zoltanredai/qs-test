@@ -102,6 +102,7 @@
     button.addEventListener('click', (e) => {
         clickCount++;
         clicksEl.textContent = `Kattintások: ${clickCount}`;
+        logEl.textContent += `------------------------------------------------\n`;
         mouseMoved = []
         const newPos = moveButton();
         drawLine(lastMouse, newPos);
