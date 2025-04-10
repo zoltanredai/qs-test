@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Push Me Játék</title>
+    <style>
+        html, body {
+            margin: 0; padding: 0;
+            height: 100%; width: 100%;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+        #button {
+            position: absolute;
+            z-index: 2;
+        }
+        #stats {
+            position: fixed;
+            top: 0; right: 0;
+            width: 25%; height: 100%;
+            background: #f0f0f0;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            z-index: 3;
+        }
+        #log {
+            max-height: calc(100% - 40px);
+            overflow-y: auto;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        #canvas {
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<button id="button">Push me</button>
+
+<div id="stats">
+    <div id="clicks">Kattintások: 0</div>
+    <div id="moves">Egérmozgások: 0</div>
+    <div id="log"></div>
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const button = document.getElementById('button');
+    const clicksEl = document.getElementById('clicks');
+    const movesEl = document.getElementById('moves');
+    const logEl = document.getElementById('log');
+
+    let clickCount = 0;
+    let moveCount = 0;
+    let lastMouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let mouseMoved = []
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function moveButton() {
+        const maxX = window.innerWidth * 0.75 - button.offsetWidth;
+        const maxY = window.innerHeight - button.offsetHeight;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+        return { x: x + button.offsetWidth / 2, y: y + button.offsetHeight / 2 };
+    }
+
+    function drawLine(from, to) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        moveCount++;
+        lastMouse = { x: e.clientX, y: e.clientY };
+        movesEl.textContent = `Egérmozgások: ${moveCount}`;
+        const time = new Date().toLocaleTimeString();
+        mouseMoved.push ({x:e.clientX, y:e.clientY, t:time});
+        logEl.textContent += `{x:${e.clientX}, y:${e.clientY}, t:${time}, lsd: ${Math.ceil(leastSquaresDif().value / mouseMoved.length)}\n`;
+        logEl.scrollTop = logEl.scrollHeight;
+    });
+
+    button.addEventListener('click', (e) => {
+        clickCount++;
+        clicksEl.textContent = `Kattintások: ${clickCount}`;
+        mouseMoved = []
+        const newPos = moveButton();
+        drawLine(lastMouse, newPos);
+    });
+
+    // Induláskor is jelenjen meg a vonal
+    const initialPos = moveButton();
+    drawLine(lastMouse, initialPos);
+
+
+    function leastSquaresDif() {
+        if(mouseMoved.length>1) {
+            let sumxi = 0;
+            let sumyi = 0;
+            let sumxiyi = 0;
+            let sumxi2 = 0;
+            mouseMoved.forEach(p => {
+                sumxi += p.x;
+                sumyi += p.y;
+                sumxiyi += (p.x * p.y);
+                sumxi2 += (p.x * p.x);
+            });
+            let a = (mouseMoved.length * sumxiyi - sumxi * sumyi) / (mouseMoved.length * sumxi2 - sumxi * sumxi);
+            let b = (sumyi - a * sumxi) / mouseMoved.length;
+            return {
+                value: mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2).reduce((sum, dif) => sum + dif, 0),
+                mouseMoved: mouseMoved,
+                mouseMovedMap: mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2),
+                sumxi: sumxi,
+                sumyi: sumyi,
+                sumxiyi: sumxiyi,
+                sumxi2: sumxi2,
+                a: a,
+                b: b
+            }
+        } else {
+            return {
+                value: -1,
+                mouseMoved: [],
+                mouseMovedMap: 0,
+                sumxi: 0,
+                sumyi: 0,
+                sumxiyi: 0,
+                sumxi2: 0,
+                a: 0,
+                b: 0
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
