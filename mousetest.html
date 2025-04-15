@@ -93,9 +93,9 @@
         moveCount++;
         lastMouse = { x: e.clientX, y: e.clientY };
         movesEl.textContent = `Egérmozgások: ${moveCount}`;
-        const time = new Date().toLocaleTimeString();
+        const time = new Date();
         mouseMoved.push ({x:e.clientX, y:e.clientY, t:time});
-        logEl.textContent += `{x:${e.clientX}, y:${e.clientY}, t:${time}, lsd: ${Math.ceil(leastSquaresDif().value / mouseMoved.length)}\n`;
+        logEl.textContent += `{x:${e.clientX}, y:${e.clientY}, t:${time.toLocaleTimeString()}, lsd: ${Math.ceil(leastSquaresDif().value / mouseMoved.length)}, speed: ${mouseSpeed()}\n`;
         logEl.scrollTop = logEl.scrollHeight;
     });
 
@@ -152,6 +152,23 @@
             }
         }
     }
+
+    function mouseSpeed() {
+        if(mouseMoved.length>1) {
+            let distance = mouseMoved
+                .map((point, i) =>
+                    (i === mouseMoved.length - 1) ? 0 :
+                        Math.sqrt(((mouseMoved[i + 1].x - point.x) ** 2) + ((mouseMoved[i + 1].y - point.y) ** 2))
+                )
+                .reduce((sum, distance) => sum + distance, 0);
+            let time = mouseMoved[mouseMoved.length-1].t - mouseMoved[0].t;
+            console.log(distance + ' - ' + time)
+            return time === 0 ? NaN : Math.round((distance *100 / time) + Number.EPSILON)
+        } else {
+            return 0;
+        }
+    }
+
 </script>
 
 </body>
