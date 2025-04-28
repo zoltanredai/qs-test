@@ -4,6 +4,8 @@
     <script type="text/javascript" src="js/qs-communication.js"></script>
     <script type="text/javascript" src="js/parameter-handling.js"></script>
     <script type="text/javascript" src="js/ai-detect.js"></script>
+    <script type="text/javascript" src="js/captcha.js"></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <form id="survey-form" action="page2.html">
@@ -12,6 +14,8 @@
     <input type="hidden" id="PanelistID" name="PanelistID" value="1"/>
     <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
     <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
+
+    <div class="g-recaptcha" data-sitekey="6LcYJyQrAAAAAL88WB4-eTm-_LBfVFv8T4NguXha"></div>
 
     <table>
         <tr>
@@ -34,7 +38,7 @@
         </tr>
     </table>
 
-    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:return submitPage('p1');"/>
+    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:checkcaptcha('p1');"/>
     <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
 
 </form>
