@@ -7,9 +7,9 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         if (params.get('test') === 'mouse') {
-            window.location.href = 'mousetest.html';
+            window.location.href = 'mousetest.html' + window.location.search;
         } else {
-            window.location.href = 'page1.html';
+            window.location.href = 'page1.html' + window.location.search;
         }
     </script>
 </head>
