@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Push Me Játék</title>
+    <title>Mouse test</title>
     <style>
         html, body {
             margin: 0; padding: 0;
@@ -92,7 +92,7 @@
     document.addEventListener('mousemove', (e) => {
         moveCount++;
         lastMouse = { x: e.clientX, y: e.clientY };
-        movesEl.textContent = `Egérmozgások: ${moveCount}`;
+        movesEl.textContent = `Mouse moves: ${moveCount}`;
         const time = new Date();
         mouseMoved.push ({x:e.clientX, y:e.clientY, t:time});
         logEl.textContent += `{x:${e.clientX}, y:${e.clientY}, t:${time.toLocaleTimeString()}, lsd: ${Math.ceil(leastSquaresDif().value / mouseMoved.length)}, speed: ${mouseSpeed()}\n`;
@@ -101,14 +101,13 @@
 
     button.addEventListener('click', (e) => {
         clickCount++;
-        clicksEl.textContent = `Kattintások: ${clickCount}`;
+        clicksEl.textContent = `Mouse clicks: ${clickCount}`;
         logEl.textContent += `------------------------------------------------\n`;
         mouseMoved = []
         const newPos = moveButton();
         drawLine(lastMouse, newPos);
     });
 
-    // Induláskor is jelenjen meg a vonal
     const initialPos = moveButton();
     drawLine(lastMouse, initialPos);
 
