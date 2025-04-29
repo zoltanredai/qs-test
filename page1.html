@@ -15,7 +15,7 @@
     <input type="hidden" id="GeoCodes" name="GeoCodes" value="1,US"/>
     <input type="hidden" id="LangCode" name="LangCode" value="EN"/>
 
-    <div class="g-recaptcha" data-sitekey="6LcYJyQrAAAAAL88WB4-eTm-_LBfVFv8T4NguXha"></div>
+    <div id="captcha-container"></div>
 
     <table>
         <tr>
@@ -38,7 +38,7 @@
         </tr>
     </table>
 
-    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:checkcaptcha('p1');"/>
+    <input type="button" value="Submit" id="submitButton" onclick="JavaScript:checkAndSubmit('p1');"/>
     <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
 
 </form>
@@ -47,5 +47,6 @@
 <script>
     generateId();
     startAiDetection();
+    addCaptcha();
 </script>
 </html>

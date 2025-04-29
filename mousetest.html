@@ -162,7 +162,6 @@
                 )
                 .reduce((sum, distance) => sum + distance, 0);
             let time = mouseMoved[mouseMoved.length-1].t - mouseMoved[0].t;
-            console.log(distance + ' - ' + time)
             return time === 0 ? NaN : Math.round((distance *100 / time) + Number.EPSILON)
         } else {
             return 0;
