@@ -87,7 +87,7 @@ $(document).ready(function () {
             mouseMovedMap: mouseMoved.map(p => (p.y - (a * p.x + b)) ** 2),
             sumxi: sumxi,
             sumyi: sumyi,
-            sumxiyi, sumxiyi,
+            sumxiyi: sumxiyi,
             sumxi2: sumxi2,
             a: a,
             b: b

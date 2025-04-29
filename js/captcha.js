@@ -1,3 +1,19 @@
+function addCaptcha() {
+    if(new URLSearchParams(window.location.search).get('captcha') === 'true') {
+        $('#captcha-container').append('<div class="g-recaptcha" data-sitekey="6LcYJyQrAAAAAL88WB4-eTm-_LBfVFv8T4NguXha"></div>');
+    }
+}
+
+
+
+function checkAndSubmit (page){
+    if(new URLSearchParams(window.location.search).get('captcha') === 'true'){
+        checkcaptcha(page)
+    } else {
+        submitPage(page);
+    }
+}
+
 function checkcaptcha(nextPage) {
     console.log ("Get token fmor google.")
     const token = grecaptcha.getResponse();
