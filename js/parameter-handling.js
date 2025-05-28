@@ -15,7 +15,7 @@ function loadId () {
     document.getElementById("PanelistID").value = localStorage.getItem("PanelistIDValue");
 }
 
-$(document).ready(function () {
+function loadParams () {
     let client_id = getParameterByName("ClientID");
     if (client_id) {
         document.getElementById("ClientID").value = client_id;
@@ -28,5 +28,9 @@ $(document).ready(function () {
     if (response_id) {
         document.getElementById("PanelistID").value = response_id;
     }
+}
+
+$(document).ready(function () {
+    loadParams();
     loadId();
 });
